@@ -17,6 +17,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskRequestDTO {
+
+
+    private Long id;
+
     @NotBlank(message = "the title is required")
     private String titre;
 
