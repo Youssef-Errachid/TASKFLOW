@@ -21,10 +21,6 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TaskResponseDTO create(TaskRequestDTO dto){
-
-        if(taskRepository.existsTaskById(dto.getId())){
-            throw new BusinessException("Task with Id : " + dto.getId() + " already exist");
-        }
         Task task = taskMapper.toEntity(dto);
         Task taskSaved = taskRepository.save(task);
 
@@ -40,7 +36,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public TaskResponseDTO getById(Long id){
-        Task task = taskRepository.getById(id);
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Task with Id : " + id + " not found"));
         TaskResponseDTO dto = taskMapper.toResponse(task);
         return dto;
     }
