@@ -1,0 +1,126 @@
+.page-title {
+    font-size: 32px;
+    color: rgb(234, 27, 27, 0.95);
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.task-subtitle {
+    color: #005600;
+    font-size: 16px;
+    text-align: center;
+    margin: 0 0 25px;
+}
+
+.task-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 28px;
+    border-radius: 14px;
+    background: rgb(219 169 130 / 0.95);
+    box-shadow: 0 2px 12px rgb(148 66 2 / 0.12),
+    0 0 0 0.5px rgb(234 27 27 / 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(148, 66, 2, 0.95);
+}
+
+.task-form input,
+.task-form select,
+.task-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid rgb(148 66 2 / 0.45);
+    border-radius: 8px;
+    background: rgb(219 169 130 / 0.95);
+    color: #222;
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.task-form input:focus,
+.task-form select:focus,
+.task-form textarea:focus {
+    border-color: rgb(234 27 27 / 0.95);
+    box-shadow: 0 0 0 3px rgb(234 27 27 / 0.10);
+}
+
+.task-form input::placeholder,
+.task-form textarea::placeholder {
+    color: #999;
+}
+
+.task-form p {
+    margin: -5px 0 3px;
+    color: rgb(234 27 27 / 0.95);
+    font-size: 13px;
+}
+
+.task-form button {
+    width: 25%;
+    align-self: center;
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgb(234 27 27 / 0.95);
+    color: #040000;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgb(234 27 27 / 0.15);
+    transition: transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.task-form button:hover:not(:disabled) {
+    background: rgb(200, 20, 20);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgb(234 27 27 / 0.22);
+}
+
+.task-form button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.task-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .page-title {
+        font-size: 27px;
+    }
+
+    .task-form {
+        margin: 16px;
+        padding: 20px;
+    }
+
+    .task-form button {
+        width: 70%;
+    }
+}
+
+.task-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+}

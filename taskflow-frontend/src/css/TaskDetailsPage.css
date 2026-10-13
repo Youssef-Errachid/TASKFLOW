@@ -1,0 +1,47 @@
+.task-details {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 25px;
+    background: rgb(219 169 130 / 0.95);
+    border-radius: 12px;
+    box-shadow: 0 0 0 0.5px rgb(234 27 27 / 0.6);
+}
+
+.task-details h2 {
+    color: rgb(234 27 27 / 0.95);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.task-details p,
+.task-details div {
+    color: rgb(148 66 2 / 0.95);
+    margin-bottom: 15px;
+}
+
+.task-details-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.task-details-links a {
+    padding: 10px 15px;
+    background: rgb(234 27 27 / 0.95);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.task-details-links a:hover {
+    transform: scale(0.97);
+}
+
+@media (max-width: 600px) {
+    .task-details {
+        margin: 20px 16px;
+        padding: 20px;
+    }
+}

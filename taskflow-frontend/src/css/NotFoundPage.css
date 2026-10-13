@@ -1,0 +1,38 @@
+.not-found {
+    text-align: center;
+    margin: 100px auto;
+    padding: 30px;
+    max-width: 400px;
+    background: rgb(219 169 130 / 0.95);
+    border-radius: 12px;
+    box-shadow: 0 0 0 0.5px rgb(234 27 27 / 0.6);
+}
+
+.not-found h1 {
+    font-size: 70px;
+    color: rgb(234 27 27 / 0.95);
+    margin: 0;
+}
+
+.not-found h2 {
+    color: rgb(148 66 2 / 0.95);
+}
+
+.not-found p {
+    color: #005600;
+    margin-bottom: 25px;
+}
+
+.not-found a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgb(234 27 27 / 0.95);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.not-found a:hover {
+    transform: scale(0.97);
+}

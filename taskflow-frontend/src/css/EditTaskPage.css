@@ -1,0 +1,75 @@
+.page-title {
+    font-size: 32px;
+    color: rgb(234 27 27 / 0.95);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.edit-task-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 12px;
+    background: rgb(219 169 130 / 0.95);
+    box-shadow: 0 0 0 0.5px rgb(234 27 27 / 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.edit-task-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: rgb(148 66 2 / 0.95);
+    font-weight: bold;
+}
+
+.edit-task-form input,
+.edit-task-form select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid rgb(148 66 2 / 0.45);
+    border-radius: 8px;
+    background: rgb(193 139 96 / 0.95);
+    outline: none;
+}
+
+.edit-task-form input:focus,
+.edit-task-form select:focus {
+    border-color: rgb(234 27 27 / 0.95);
+}
+
+.edit-task-form button {
+    width: 30%;
+    align-self: flex-end;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgb(234 27 27 / 0.95);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.edit-task-form button:hover {
+    transform: scale(0.97);
+}
+
+@media (max-width: 600px) {
+    .page-title {
+        font-size: 27px;
+    }
+
+    .edit-task-form {
+        margin: 16px;
+        padding: 20px;
+    }
+}
+.task-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+}
