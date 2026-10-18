@@ -1,0 +1,14 @@
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 80%;
+    margin: 24px auto;
+    border-radius: 14px;
+    background-color: rgb(228 211 196 / 0.95);
+    box-shadow: 0 0 0 1px rgb(52 1 1 / 0.95),
+    0 6px 16px rgb(0 0 0 / 0.12);
+    color: rgb(4 0 0);
+    font-size: 80%;
+}
