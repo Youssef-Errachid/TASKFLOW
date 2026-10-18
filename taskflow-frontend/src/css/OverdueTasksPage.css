@@ -1,0 +1,28 @@
+.page-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 80%;
+    margin: 24px auto;
+    padding: 20px 24px;
+    border-radius: 14px;
+    background-color: rgb(228 211 196 / 0.95);
+    box-shadow: 0 0 0 1px rgb(52 1 1 / 0.95),
+    0 6px 16px rgb(0 0 0 / 0.12);
+    color: rgb(34 91 41 / 0.95);
+}
+
+.page-title h1 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: rgb(5 0 0 / 0.95);
+}
+
+.page-title p {
+    margin: 4px 0 0;
+    font-size: 15px;
+    color: #005600;
+}
