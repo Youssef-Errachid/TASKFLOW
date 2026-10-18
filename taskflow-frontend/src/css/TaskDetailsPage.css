@@ -2,20 +2,20 @@
     max-width: 500px;
     margin: 40px auto;
     padding: 25px;
-    background: rgb(219 169 130 / 0.95);
+    background: rgb(205 183 166 / 0.95);
     border-radius: 12px;
-    box-shadow: 0 0 0 0.5px rgb(234 27 27 / 0.6);
+    box-shadow: 0 0 0 0.5px rgb(0 86 0);
 }
 
 .task-details h2 {
-    color: rgb(234 27 27 / 0.95);
+    color: rgb(0 86 0);
     text-align: center;
     margin-bottom: 20px;
 }
 
 .task-details p,
 .task-details div {
-    color: rgb(148 66 2 / 0.95);
+    color: rgb(23 11 1 / 0.95);
     margin-bottom: 15px;
 }
 
@@ -28,7 +28,7 @@
 
 .task-details-links a {
     padding: 10px 15px;
-    background: rgb(234 27 27 / 0.95);
+    background: rgb(123 115 115 / 0.95);
     color: white;
     text-decoration: none;
     border-radius: 8px;
