@@ -1,64 +1,174 @@
 body{
-    background-color: rgb(219 169 130 / 0.95);
+    background-color: rgb(248 233 223 / 0.95);
 }
 .page-title {
-    font-size: 32px;
-    color: rgb(234 27 27 / 0.95);
-    text-align: left;
-    margin-bottom:-24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 80%;
+    margin: 24px auto;
+    padding: 20px 24px;
+    border-radius: 14px;
+    background-color: rgb(228 211 196 / 0.95);
+    box-shadow: 0 0 0 1px rgb(52 1 1 / 0.95),
+    0 6px 16px rgb(0 0 0 / 0.12);
+    color: rgb(34 91 41 / 0.95);
 }
 
-.task-subtitle {
+.page-title h1 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: rgb(5 0 0 / 0.95);
+}
+
+.page-title p {
+    margin: 4px 0 0;
+    font-size: 15px;
     color: #005600;
-    font-size: 16px;
-    margin:24px ;
+}
+
+@media (max-width: 640px) {
+    .app-title { width: 92%; padding: 14px; }
+    .app-title h1 { font-size: 28px; }
 }
 .container-newtask-btn{
     display: flex;
+    justify-content: space-between;
     width: 100%;
     height: 40px;
-    justify-content: right;
 }
 
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 100px;
+}
+
+.search-box{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    height: 40px;
+    width: 280px;
+    border-radius: 10px;
+    background-color: rgb(228 211 196 / 0.95);
+    box-shadow: 0 0 0 0.5px rgb(52 1 1 / 0.95);
+    transition: box-shadow 0.2s ease;
+}
+
+.search-box:focus-within {
+    box-shadow: 0 0 0 2px rgb(34 91 41 / 0.95);
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+    color: black;
+}
+
+.filter-box{
+    display: flex;
+    gap: 8px;
+    padding: 0 12px;
+    height: 40px;
+    width: 120px;
+    border-radius: 10px;
+    background-color: rgb(228 211 196 / 0.95);
+    box-shadow: 0 0 0 0.5px rgb(52 1 1 / 0.95);
+    transition: box-shadow 0.2s ease;
+}
 .btn-newtask{
     display: flex;
     text-align: center;
-    width: 120px;
+    margin-right: 100px;
+    width: 180px;
     height: 40px;
     box-shadow: 0 0 0 0.5px rgb(52 1 1 / 0.95);
     border-radius: 10px;
     text-decoration: none;
-    background-color: tomato;
     color: black;
     justify-content: center;
     align-items: center;
     transition: transform 0.2s ease;
 }
 
+.filter-box select {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+    color: black;
+}
+
 .btn-newtask:hover{
-    background-color: #6e7b00;
+    background-color: rgb(34 91 41 / 0.95);
     transform: scale(1.05);
+}
+.table-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
 }
 
 .table{
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
     margin-top: 24px;
-    background-color: rgb(255 161 90 / 0.95);
+    background-color: rgb(228 211 196 / 0.95);
 }
 th, td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid rgb(246 113 19 / 0.95);
+    border-bottom: 1px solid rgb(136 116 103 / 0.95);
 }
 
 th {
-    background: rgb(148 66 2 / 0.95);
+    background: rgb(118 114 111 / 0.95);
 }
 
 tr:hover {
-    background: rgb(182 87 13 / 0.95);
+    background: rgb(191 191 188 / 0.95);
 }
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.pagination button {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: black;
+    background-color: rgb(228 211 196 / 0.95);
+    box-shadow: 0 0 0 0.5px rgb(52 1 1 / 0.95);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-weight: 600;
+    color: rgb(5 0 0 / 0.95);
+}
+
 
