@@ -4,6 +4,9 @@ import {useNavigate} from "react-router-dom";
 import {createTask} from "../api/taskService.js"
 import { taskSchema} from "../validation/taskSchema.js";
 import "../css/CreateTaskPage.css"
+import Header from "../components/Header.jsx";
+import {ListChecks} from "lucide-react";
+import Footer from "../components/Footer.jsx";
 
 export default function CreateTaskPage() {
     const navigate = useNavigate();
@@ -24,10 +27,9 @@ export default function CreateTaskPage() {
     }
     return (
         <div>
-            <h1 className="page-title">New Task </h1>
-            <p className="task-subtitle">
-                create new task
-            </p>
+
+            <Header title={ "New Task "} icon={<ListChecks size={38}/>}/>
+
             <form className="task-form" onSubmit={handleSubmit(onSubmit)}noValidate>
                 <label>titre
                     <input type="text"  {...register("titre")} placeholder="titre" />
@@ -72,6 +74,7 @@ export default function CreateTaskPage() {
                     <button type="submit" disabled={isSubmitting}>Save</button>
                 </div>
             </form>
+            <Footer/>
         </div>
     );
 }

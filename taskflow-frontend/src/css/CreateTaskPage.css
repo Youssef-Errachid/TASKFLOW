@@ -1,6 +1,6 @@
 .page-title {
     font-size: 32px;
-    color: rgb(234, 27, 27, 0.95);
+    color: rgb(248 172 172 / 0.95);
     text-align: center;
     margin-bottom: 8px;
     font-weight: 700;
@@ -15,12 +15,13 @@
 
 .task-form {
     max-width: 500px;
-    margin: 20px auto;
+    margin: 60px auto;
+    margin-bottom: 60px;
     padding: 28px;
     border-radius: 14px;
-    background: rgb(219 169 130 / 0.95);
+    background: rgb(234 223 215 / 0.95);
     box-shadow: 0 2px 12px rgb(148 66 2 / 0.12),
-    0 0 0 0.5px rgb(234 27 27 / 0.6);
+    0 0 0 0.5px rgb(205 202 202 / 0.6);
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -32,7 +33,7 @@
     gap: 7px;
     font-size: 15px;
     font-weight: 600;
-    color: rgb(148, 66, 2, 0.95);
+    color: rgb(11 9 8 / 0.95);
 }
 
 .task-form input,
@@ -43,7 +44,7 @@
     padding: 11px 12px;
     border: 1px solid rgb(148 66 2 / 0.45);
     border-radius: 8px;
-    background: rgb(219 169 130 / 0.95);
+    background: rgb(246 227 213 / 0.95);
     color: #222;
     font: inherit;
     font-size: 14px;
@@ -55,7 +56,7 @@
 .task-form input:focus,
 .task-form select:focus,
 .task-form textarea:focus {
-    border-color: rgb(234 27 27 / 0.95);
+    border-color: rgb(105 87 87 / 0.95);
     box-shadow: 0 0 0 3px rgb(234 27 27 / 0.10);
 }
 
@@ -66,7 +67,7 @@
 
 .task-form p {
     margin: -5px 0 3px;
-    color: rgb(234 27 27 / 0.95);
+    color: rgb(243 3 3 / 0.95);
     font-size: 13px;
 }
 
@@ -77,7 +78,7 @@
     padding: 12px;
     border: none;
     border-radius: 8px;
-    background: rgb(234 27 27 / 0.95);
+    background: rgb(168 144 144 / 0.95);
     color: #040000;
     font-size: 15px;
     font-weight: 600;
@@ -89,7 +90,7 @@
 }
 
 .task-form button:hover:not(:disabled) {
-    background: rgb(200, 20, 20);
+    background: rgb(169 148 148);
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgb(234 27 27 / 0.22);
 }
