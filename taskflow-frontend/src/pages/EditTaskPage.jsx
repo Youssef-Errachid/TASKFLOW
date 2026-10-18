@@ -2,6 +2,9 @@ import {useEffect, useState } from "react";
 import {getTaskById,updateTask} from "../api/taskService.js"
 import {useNavigate, useParams} from "react-router-dom";
 import "../css/EditTaskPage.css"
+import Header from "../components/Header.jsx";
+import {ListChecks} from "lucide-react";
+import Footer from "../components/Footer.jsx";
 
 export default function EditTaskPage() {
     const navigate = useNavigate();
@@ -42,7 +45,7 @@ export default function EditTaskPage() {
     }
     return (
         <div>
-            <h1 className="page-title">Edit Task </h1>
+            <Header title={"Edit Task"} icon={<ListChecks size={38}/>}/>
             <form className="edit-task-form" onSubmit={handleSubmit}>
                 <label>titre
                     <input type="text" name="titre" placeholder="titre" value={task.titre} onChange={handleChange}/>
@@ -71,6 +74,7 @@ export default function EditTaskPage() {
                 <button type="submit">Save</button>
                 </div>
             </form>
+            <Footer/>
         </div>
     );
 }

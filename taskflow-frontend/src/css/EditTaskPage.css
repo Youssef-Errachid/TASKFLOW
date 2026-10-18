@@ -7,7 +7,9 @@
 
 .edit-task-form {
     max-width: 500px;
-    margin: 20px auto;
+    margin: 60px auto;
+    margin-top: 60px;
+    margin-bottom: 120px;
     padding: 25px;
     border-radius: 12px;
     background: rgb(219 169 130 / 0.95);
