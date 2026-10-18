@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TaskResponseDTO {
+    private Long id;
     private String titre;
     private String description;
     private Statut statut;
