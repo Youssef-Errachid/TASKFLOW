@@ -1,127 +1,265 @@
-.page-title {
-    font-size: 32px;
-    color: rgb(248 172 172 / 0.95);
-    text-align: center;
-    margin-bottom: 8px;
+/* CreateTaskPage — all classes are prefixed with "ct-" so they cannot collide with
+   the other page stylesheets (EditTaskPage.css, TaskListPage.css) that Vite bundles globally. */
+
+.ct-main {
+    --ct-tan: rgb(219 169 130);        /* page tone already used by the project */
+    --ct-surface: #fbf1e6;             /* lighter card surface for contrast with the page */
+    --ct-brown: #7a3500;               /* text / labels (darker than before for contrast) */
+    --ct-brown-soft: #944202;
+    --ct-line: rgb(148 66 2 / 0.35);
+    --ct-red: #c81414;                 /* primary action */
+    --ct-red-dark: #a50f0f;
+    --ct-green: #005600;               /* helper text, same green as the old subtitle */
+
+    padding: 24px 16px 48px;
+}
+
+/* ---------- Card ---------- */
+
+.ct-card {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--ct-surface);
+    border-radius: 16px;
+    border: 1px solid var(--ct-line);
+    box-shadow: 0 10px 30px rgb(122 53 0 / 0.18);
+    border-top: 5px solid var(--ct-red);
+}
+
+.ct-card-head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ct-card-title {
+    margin: 0;
+    font-size: 22px;
     font-weight: 700;
+    color: var(--ct-brown);
 }
 
-.task-subtitle {
-    color: #005600;
-    font-size: 16px;
-    text-align: center;
-    margin: 0 0 25px;
+.ct-card-sub {
+    margin: 0;
+    font-size: 14px;
+    color: var(--ct-green);
 }
 
-.task-form {
-    max-width: 500px;
-    margin: 60px auto;
-    margin-bottom: 60px;
-    padding: 28px;
-    border-radius: 14px;
-    background: rgb(234 223 215 / 0.95);
-    box-shadow: 0 2px 12px rgb(148 66 2 / 0.12),
-    0 0 0 0.5px rgb(205 202 202 / 0.6);
+/* ---------- Fields ---------- */
+
+.ct-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.ct-field {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
+    min-width: 0; /* lets grid children shrink instead of overflowing */
 }
 
-.task-form label {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    font-size: 15px;
+.ct-label {
+    font-size: 14px;
     font-weight: 600;
-    color: rgb(11 9 8 / 0.95);
+    color: var(--ct-brown);
 }
 
-.task-form input,
-.task-form select,
-.task-form textarea {
+.ct-field input,
+.ct-field select,
+.ct-field textarea {
     width: 100%;
     box-sizing: border-box;
-    padding: 11px 12px;
-    border: 1px solid rgb(148 66 2 / 0.45);
-    border-radius: 8px;
-    background: rgb(246 227 213 / 0.95);
-    color: #222;
+    padding: 11px 14px;
     font: inherit;
-    font-size: 14px;
+    font-size: 15px;
+    color: #2a1608;
+    background: #fff;
+    border: 1.5px solid var(--ct-line);
+    border-radius: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ct-field textarea {
+    resize: vertical;
+    min-height: 104px;
+    padding-bottom: 26px; /* room for the character counter */
+    line-height: 1.5;
+}
+
+.ct-field input::placeholder,
+.ct-field textarea::placeholder {
+    color: #a08a78;
+}
+
+.ct-field select {
+    appearance: none;
+    padding-right: 38px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%237a3500' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+}
+
+.ct-field input:hover,
+.ct-field select:hover,
+.ct-field textarea:hover {
+    border-color: var(--ct-brown-soft);
+}
+
+.ct-field input:focus-visible,
+.ct-field select:focus-visible,
+.ct-field textarea:focus-visible {
     outline: none;
-    transition: border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    border-color: var(--ct-brown-soft);
+    box-shadow: 0 0 0 3px rgb(148 66 2 / 0.25);
 }
 
-.task-form input:focus,
-.task-form select:focus,
-.task-form textarea:focus {
-    border-color: rgb(105 87 87 / 0.95);
-    box-shadow: 0 0 0 3px rgb(234 27 27 / 0.10);
+/* Invalid state */
+.ct-field--invalid input,
+.ct-field--invalid select,
+.ct-field--invalid textarea {
+    border-color: var(--ct-red);
+    background-color: #fff6f6;
 }
 
-.task-form input::placeholder,
-.task-form textarea::placeholder {
-    color: #999;
+.ct-field--invalid input:focus-visible,
+.ct-field--invalid select:focus-visible,
+.ct-field--invalid textarea:focus-visible {
+    box-shadow: 0 0 0 3px rgb(200 20 20 / 0.22);
 }
 
-.task-form p {
-    margin: -5px 0 3px;
-    color: rgb(243 3 3 / 0.95);
+.ct-error,
+.ct-hint {
+    margin: 0;
     font-size: 13px;
+    line-height: 1.4;
 }
 
-.task-form button {
-    width: 25%;
-    align-self: center;
-    margin-top: 10px;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: rgb(168 144 144 / 0.95);
-    color: #040000;
+.ct-error {
+    color: var(--ct-red-dark);
+    font-weight: 600;
+}
+
+.ct-hint {
+    color: var(--ct-green);
+}
+
+.ct-counter {
+    position: absolute;
+    right: 12px;
+    bottom: 8px;
+    font-size: 12px;
+    color: #8a7261;
+    pointer-events: none;
+}
+
+/* ---------- Alert (API failure) ---------- */
+
+.ct-alert {
+    padding: 12px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ct-red-dark);
+    background: #fdeaea;
+    border: 1px solid rgb(200 20 20 / 0.45);
+    border-radius: 10px;
+}
+
+/* ---------- Buttons ---------- */
+
+.ct-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 4px;
+    padding-top: 20px;
+    border-top: 1px solid var(--ct-line);
+}
+
+.ct-btn {
+    min-width: 120px;
+    padding: 12px 22px;
+    font: inherit;
     font-size: 15px;
     font-weight: 600;
+    border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 3px 6px rgb(234 27 27 / 0.15);
-    transition: transform 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
 }
 
-.task-form button:hover:not(:disabled) {
-    background: rgb(169 148 148);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgb(234 27 27 / 0.22);
+.ct-btn:focus-visible {
+    outline: 3px solid rgb(148 66 2 / 0.45);
+    outline-offset: 2px;
 }
 
-.task-form button:active:not(:disabled) {
+.ct-btn:active:not(:disabled) {
     transform: scale(0.97);
 }
 
-.task-form button:disabled {
+.ct-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
+.ct-btn--primary {
+    color: #fff;
+    background: var(--ct-red);
+    border: 1.5px solid var(--ct-red);
+}
+
+.ct-btn--primary:hover:not(:disabled) {
+    background: var(--ct-red-dark);
+    border-color: var(--ct-red-dark);
+}
+
+.ct-btn--ghost {
+    color: var(--ct-brown);
+    background: transparent;
+    border: 1.5px solid var(--ct-brown-soft);
+}
+
+.ct-btn--ghost:hover:not(:disabled) {
+    background: rgb(148 66 2 / 0.1);
+}
+
+/* ---------- Responsive ---------- */
+
 @media (max-width: 600px) {
-    .page-title {
-        font-size: 27px;
+    .ct-main {
+        padding: 16px 12px 32px;
     }
 
-    .task-form {
-        margin: 16px;
-        padding: 20px;
+    .ct-card {
+        padding: 22px 18px;
+        gap: 18px;
     }
 
-    .task-form button {
-        width: 70%;
+    .ct-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .ct-actions {
+        flex-direction: column-reverse;
+    }
+
+    .ct-btn {
+        width: 100%;
     }
 }
 
-.task-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 10px;
+@media (prefers-reduced-motion: reduce) {
+    .ct-field input,
+    .ct-field select,
+    .ct-field textarea,
+    .ct-btn {
+        transition: none;
+    }
 }
