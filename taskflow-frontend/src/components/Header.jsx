@@ -1,24 +1,28 @@
-import {LayoutDashboard,MailQuestionMark} from "lucide-react";
-import {Link} from "react-router-dom"
-import "../css/Header.css"
+import { LayoutDashboard, MailQuestionMark } from "lucide-react";
+import { Link } from "react-router-dom";
+import "../css/Header.css";
 
-export default function Header({title,icon}){
+export default function Header({ title = "TaskFlow Header", icon }) {
     return (
-        <div>
+        <header className="hd">
+            <div className="hd-inner">
+                <Link to="/dachboard" className="hd-nav-btn" aria-label="Go to dashboard" title="Dashboard">
+                    <LayoutDashboard size={24} aria-hidden="true" />
+                </Link>
 
-            <div className="app-title">
-                <div className="dashboard-icon">
-                    <Link to={`/dachboard`}><LayoutDashboard size={40}  /></Link>
+                {icon && (
+                    <span className="hd-page-icon" aria-hidden="true">{icon}</span>
+                )}
+
+                <div className="hd-text">
+                    <h1 className="hd-title">{title}</h1>
+                    <p className="hd-tagline">Manage and track all your tasks</p>
                 </div>
-                {icon}
-                <div>
-                    <h1>{title}</h1>
-                    <p>Manage and track all your tasks</p>
-                </div>
-                <div className="icon">
-                    <Link to={`/dachboard`}><MailQuestionMark  size={40}  /></Link>
-                </div>
+
+                <Link to="/dachboard" className="hd-nav-btn" aria-label="Go to dashboard" title="Dashboard">
+                    <MailQuestionMark size={24} aria-hidden="true" />
+                </Link>
             </div>
-        </div>
-    )
+        </header>
+    );
 }

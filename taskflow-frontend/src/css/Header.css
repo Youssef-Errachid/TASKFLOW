@@ -1,48 +1,102 @@
-.app-title{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    width: 80%;
-    margin: 24px auto;
-    padding: 20px 24px;
-    border-radius: 14px;
-    background-color: rgb(228 211 196 / 0.95);
-    box-shadow: 0 0 0 1px rgb(52 1 1 / 0.95),
-    0 6px 16px rgb(0 0 0 / 0.12);
-    color: rgb(34 91 41 / 0.95);
+/* Header — classes are prefixed with "hd-" so they cannot collide with other stylesheets. */
+
+.hd {
+    color: #fbf1e6;
+    background: #7a3500;
+    border-bottom: 4px solid #c81414;
+    box-shadow: 0 4px 16px rgb(122 53 0 / 0.25);
 }
 
-.dashboard-icon{
-    position: absolute;
-    left: 70px;
-    box-shadow: 0 0 0 1px rgb(52 1 1 / 0.95);
-    background-color: rgb(228 211 196 / 0.95);
-    border-radius: 10px;
-    width: 80px;
-    height: 100px;
-}
-.dashboard-icon a {
+.hd-inner {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-top: 24px;
-    color: darkgreen;
+    gap: 14px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+    box-sizing: border-box;
 }
 
-.icon{
-    position: absolute;
-    right: 70px;
-    box-shadow: 0 0 0 1px rgb(52 1 1 / 0.95);
-    background-color: rgb(228 211 196 / 0.95);
-    border-radius: 10px;
-    width: 80px;
-    height: 100px;
+.hd-page-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: #ffd9b8;
 }
-.icon a {
-    display: flex;
-    justify-content: center;
+
+/* pages pass icons with size={38}; keep them in proportion with the title */
+.hd-page-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.hd-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.hd-title {
+    margin: 0;
+    font-size: 26px;
+    line-height: 1.2;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.hd-tagline {
+    margin: 2px 0 0;
+    font-size: 14px;
+    color: #f0d6bd;
+}
+
+.hd-nav-btn {
+    display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
-    margin-top: 24px;
-    color: darkgreen;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: #fbf1e6;
+    background: rgb(251 241 230 / 0.14);
+    border-radius: 12px;
+    transition: background-color 0.15s ease;
+}
+
+.hd-nav-btn:hover {
+    background: rgb(251 241 230 / 0.26);
+}
+
+.hd-nav-btn:focus-visible {
+    outline: 3px solid #fbf1e6;
+    outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+    .hd-inner {
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .hd-page-icon svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .hd-title {
+        font-size: 20px;
+    }
+
+    .hd-tagline {
+        font-size: 13px;
+    }
+
+    .hd-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hd-nav-btn {
+        transition: none;
+    }
 }
