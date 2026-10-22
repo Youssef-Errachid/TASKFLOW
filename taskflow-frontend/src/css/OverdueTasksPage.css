@@ -1,28 +1,330 @@
-.page-title {
+/* OverdueTasksPage — classes are prefixed with "ov-" so they cannot collide with other page stylesheets.
+   Self-contained: it does not depend on the other pages' stylesheets. */
+
+.ov-main {
+    --ov-surface: #fbf1e6;
+    --ov-brown: #7a3500;
+    --ov-brown-soft: #944202;
+    --ov-line: rgb(148 66 2 / 0.3);
+    --ov-red: #c81414;
+    --ov-red-dark: #a50f0f;
+    --ov-green: #005600;
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+}
+
+/* ---------- Alert / empty / loading ---------- */
+
+.ov-alert {
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ov-red-dark);
+    background: #fdeaea;
+    border: 1px solid rgb(200 20 20 / 0.45);
+    border-radius: 10px;
+}
+
+.ov-state {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ov-brown);
+    background: var(--ov-surface);
+    border: 1px solid var(--ov-line);
+    border-radius: 14px;
+}
+
+.ov-state p {
+    margin: 0;
+}
+
+.ov-btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    width: 80%;
-    margin: 24px auto;
-    padding: 20px 24px;
-    border-radius: 14px;
-    background-color: rgb(228 211 196 / 0.95);
-    box-shadow: 0 0 0 1px rgb(52 1 1 / 0.95),
-    0 6px 16px rgb(0 0 0 / 0.12);
-    color: rgb(34 91 41 / 0.95);
-}
-
-.page-title h1 {
-    margin: 0;
-    font-size: 40px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: rgb(5 0 0 / 0.95);
-}
-
-.page-title p {
-    margin: 4px 0 0;
+    height: 44px;
+    padding: 0 20px;
+    box-sizing: border-box;
     font-size: 15px;
-    color: #005600;
+    font-weight: 600;
+    color: var(--ov-brown);
+    text-decoration: none;
+    border: 1.5px solid var(--ov-brown-soft);
+    border-radius: 10px;
+    transition: background-color 0.15s ease;
+}
+
+.ov-btn:hover {
+    background: rgb(148 66 2 / 0.1);
+}
+
+.ov-btn:focus-visible {
+    outline: 3px solid rgb(148 66 2 / 0.45);
+    outline-offset: 2px;
+}
+
+.ov-count {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ov-red-dark);
+}
+
+/* ---------- Table ---------- */
+
+.ov-table-wrap {
+    overflow-x: auto;
+    background: var(--ov-surface);
+    border: 1px solid var(--ov-line);
+    border-top: 5px solid var(--ov-red);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgb(122 53 0 / 0.18);
+}
+
+.ov-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #2a1608;
+}
+
+.ov-table th {
+    padding: 12px 14px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--ov-brown);
+    background: rgb(148 66 2 / 0.12);
+    border-bottom: 1px solid var(--ov-line);
+}
+
+.ov-table td {
+    padding: 12px 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid rgb(148 66 2 / 0.15);
+}
+
+.ov-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.ov-row:hover {
+    background: rgb(148 66 2 / 0.07);
+}
+
+.ov-cell-title {
+    font-weight: 600;
+    color: var(--ov-brown);
+}
+
+.ov-cell-desc span {
+    display: block;
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Deadline: every row here is overdue, so the date itself is red and a second line says by how much */
+.ov-cell-deadline {
+    white-space: nowrap;
+}
+
+.ov-deadline-date {
+    display: block;
+    font-weight: 600;
+    color: var(--ov-red-dark);
+}
+
+.ov-overdue-by {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ov-brown-soft);
+}
+
+/* Status pills */
+.ov-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    border-radius: 999px;
+    border: 1px solid transparent;
+}
+
+.ov-badge--todo {
+    color: #5a2800;
+    background: #f0dfcc;
+    border-color: rgb(148 66 2 / 0.35);
+}
+
+.ov-badge--in-progress {
+    color: #6b4300;
+    background: #ffe7b3;
+    border-color: #e6bf6a;
+}
+
+.ov-badge--done {
+    color: #004400;
+    background: #d6ecd6;
+    border-color: #8fc28f;
+}
+
+/* Priority: coloured dot + text */
+.ov-priority {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.ov-priority::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.ov-priority--low {
+    color: #1f7a1f;
+}
+
+.ov-priority--medium {
+    color: #a86a00;
+}
+
+.ov-priority--high {
+    color: var(--ov-red-dark);
+}
+
+/* Row actions */
+.ov-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.ov-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    color: var(--ov-brown);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.ov-icon-btn:hover {
+    background: rgb(148 66 2 / 0.12);
+    border-color: var(--ov-line);
+}
+
+.ov-icon-btn:focus-visible {
+    outline: 3px solid rgb(148 66 2 / 0.45);
+    outline-offset: 1px;
+}
+
+.ov-icon-btn--danger {
+    color: var(--ov-red-dark);
+}
+
+.ov-icon-btn--danger:hover {
+    background: #fdeaea;
+    border-color: rgb(200 20 20 / 0.45);
+}
+
+/* ---------- Responsive: table rows become stacked cards ---------- */
+
+@media (max-width: 760px) {
+    .ov-main {
+        padding: 16px 12px 32px;
+    }
+
+    .ov-table-wrap {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        overflow: visible;
+    }
+
+    .ov-table,
+    .ov-table tbody,
+    .ov-table tr,
+    .ov-table td {
+        display: block;
+    }
+
+    /* header row hidden visually but kept for screen readers */
+    .ov-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+
+    .ov-row {
+        margin-bottom: 12px;
+        padding: 6px 0;
+        background: var(--ov-surface);
+        border: 1px solid var(--ov-line);
+        border-left: 4px solid var(--ov-red);
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgb(122 53 0 / 0.14);
+    }
+
+    .ov-table td,
+    .ov-table tbody tr:last-child td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 8px 14px;
+        border-bottom: none;
+        text-align: right;
+    }
+
+    .ov-table td::before {
+        content: attr(data-label);
+        flex-shrink: 0;
+        font-size: 13px;
+        font-weight: 700;
+        text-align: left;
+        color: var(--ov-brown-soft);
+    }
+
+    .ov-cell-desc span {
+        max-width: 55vw;
+    }
+
+    .ov-cell-deadline {
+        white-space: normal;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ov-btn,
+    .ov-icon-btn {
+        transition: none;
+    }
 }
