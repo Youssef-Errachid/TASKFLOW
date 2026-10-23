@@ -31,7 +31,6 @@ public class TaskRequestDTO {
     private Priorite priorite;
 
     @NotNull(message = "dead line is required")
-    @Future(message = "deadline must be in the future")
     private LocalDateTime deadline;
 
 }
