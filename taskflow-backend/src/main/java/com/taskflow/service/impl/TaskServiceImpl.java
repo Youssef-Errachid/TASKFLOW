@@ -35,7 +35,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Page<TaskResponseDTO> getAll(Statut statut,String search ,Pageable pageable){
+    public Page<TaskResponseDTO> getAll(
+            Statut statut, String search, Pageable pageable) {
 
         boolean hasSearch = search != null && !search.isBlank();
         boolean hasStatut = statut != null;
@@ -43,13 +44,18 @@ public class TaskServiceImpl implements TaskService {
         Page<Task> tasks;
 
         if (hasSearch && hasStatut) {
-            tasks = taskRepository.findByTitreContainingIgnoreCaseAndStatut(search.trim(), statut, pageable);
+            tasks = taskRepository
+                    .findByTitreContainingIgnoreCaseAndStatutAndDeletedFalse(
+                            search.trim(), statut, pageable);
         } else if (hasSearch) {
-            tasks = taskRepository.findAllByTitreContainingIgnoreCase(search.trim(), pageable);
+            tasks = taskRepository
+                    .findByTitreContainingIgnoreCaseAndDeletedFalse(
+                            search.trim(), pageable);
         } else if (hasStatut) {
-            tasks = taskRepository.findByStatut(statut,pageable);
+            tasks = taskRepository
+                    .findByStatutAndDeletedFalse(statut, pageable);
         } else {
-            tasks = taskRepository.findAll(pageable);
+            tasks = taskRepository.findByDeletedFalse(pageable);
         }
 
         return tasks.map(taskMapper::toResponse);
@@ -74,11 +80,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void deleteTask(Long id){
 
-        if(!taskRepository.existsTaskById(id)){
-            throw new BusinessException("Task with Id : "  + id + " not found");
-        }
+        Task  task =  taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task with Id : " + id  + " not found"));
+        task.setDeleted(true);
 
-        taskRepository.deleteById(id);
+        taskRepository.save(task);
         }
     @Override
     public Page<TaskResponseDTO> getTaskByStatut(Statut statut,Pageable pageable){

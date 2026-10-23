@@ -39,4 +39,12 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findTop5ByOrderByDateCreationDesc();
 
     List<Task> findTop5ByDeadlineBeforeAndStatutNotOrderByDeadlineAsc(LocalDateTime now, Statut statut);
+
+    Page<Task> findByDeletedFalse(Pageable pageable);
+
+    Page<Task> findByTitreContainingIgnoreCaseAndStatutAndDeletedFalse(String trim, Statut statut, Pageable pageable);
+
+    Page<Task> findByTitreContainingIgnoreCaseAndDeletedFalse(String trim, Pageable pageable);
+
+    Page<Task> findByStatutAndDeletedFalse(Statut statut, Pageable pageable);
 }

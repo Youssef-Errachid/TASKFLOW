@@ -26,6 +26,9 @@ public class Task {
     @NotBlank(message = "the description is required")
     private String description;
 
+    @Builder.Default
+    private boolean deleted = false;
+
     @NotNull(message = "status is required")
     @Enumerated(EnumType.STRING)
     private Statut statut;
